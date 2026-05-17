@@ -1,0 +1,174 @@
+/* ===========================
+   Reset & Base
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+    background: #0b1220;
+}
+
+/* ===========================
+   Screen Containers
+   =========================== */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#invitation-screen {
+    z-index: 1;
+}
+
+#cover-screen {
+    z-index: 10;
+}
+
+#open-button {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    min-width: 255px;
+    min-height: 21px;
+    background: transparent;
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-shadow:
+        0 0 8px rgba(212, 175, 55, 0.8),
+        0 0 16px rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 0 10px rgba(212, 175, 55, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1.0;
+    }
+}
+
+#audio-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(11, 18, 32, 0.5);
+    opacity: 0.75;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===========================
+   Video Elements
+   =========================== */
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* ===========================
+   Split Animation Layers
+   =========================== */
+.cover-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    z-index: 20;
+}
+
+.cover-right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    z-index: 20;
+}
+
+.center-glow {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 25;
+    background: radial-gradient(
+        ellipse 50% 50vh at center,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+}
+
+/* ===========================
+   Utility Classes
+   =========================== */
+.hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.no-pointer-events {
+    pointer-events: none;
+}
+
+/* ===========================
+   Responsive Breakpoints
+   =========================== */
+
+/* Mobile: viewport width < 768px */
+@media (max-width: 767px) {
+    #open-button {
+        font-size: 14px;
+    }
+
+    #audio-toggle {
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+/* Tablet: viewport width 768px–1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #open-button {
+        font-size: 16px;
+    }
+}
+
+/* Desktop: viewport width > 1024px (default styles apply — font-size: 18px) */
